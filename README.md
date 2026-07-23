@@ -24,6 +24,15 @@ chmod +x start.sh
 ./start.sh
 ```
 
+O projeto usa o backend RakNet JavaScript para evitar a compilação de módulos C++ no Android. O arquivo `.npmrc` desativa scripts de instalação de dependências nativas; não use `npm install --ignore-scripts=false` neste projeto.
+
+Se você já tentou instalar e recebeu erro de `raknet-native`, limpe a instalação parcial e repita:
+
+```sh
+rm -rf node_modules
+npm install
+```
+
 ## Configuração
 
 Copie `.env.example` para `.env` e informe:

@@ -16,7 +16,7 @@ export class BuddyBot extends EventEmitter {
   }
 
   connect() {
-    this.client = createClient({ host: process.env.MC_HOST, port: Number(process.env.MC_PORT || 19132), username: process.env.MC_USERNAME || 'BuddyBot', offline: process.env.MC_OFFLINE !== 'false' });
+    this.client = createClient({ host: process.env.MC_HOST, port: Number(process.env.MC_PORT || 19132), username: process.env.MC_USERNAME || 'BuddyBot', offline: process.env.MC_OFFLINE !== 'false', raknetBackend: 'jsp-raknet' });
     this.movement = new Movement(this.client); this.inventory = new Inventory(this.client);
     const send = message => sendChat(this.client, message);
     this.handleCommand = createCommandHandler({ send, tasks: this.tasks, stop: () => this.disconnect() });
