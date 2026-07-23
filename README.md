@@ -24,7 +24,7 @@ chmod +x start.sh
 ./start.sh
 ```
 
-O projeto usa o backend RakNet JavaScript para evitar a compilação de módulos C++ no Android. O arquivo `.npmrc` desativa scripts de instalação de dependências nativas; não use `npm install --ignore-scripts=false` neste projeto.
+O projeto usa o backend RakNet JavaScript para evitar a compilação de módulos C++ no Android. Como o `createClient` padrão faz um ping usando o módulo nativo, o BuddyBot usa um adaptador próprio sem esse ping. Se a conexão falhar por versão, ajuste `MC_VERSION` para a versão do servidor.
 
 Se você já tentou instalar e recebeu erro de `raknet-native`, limpe a instalação parcial e repita:
 
@@ -41,6 +41,7 @@ Copie `.env.example` para `.env` e informe:
 | --- | --- | --- |
 | `MC_HOST` | sim | IP ou hostname do servidor Bedrock |
 | `MC_PORT` | não | Porta Bedrock, padrão `19132` |
+| `MC_VERSION` | não | Versão Bedrock do servidor, padrão `1.21.80` |
 | `MC_USERNAME` | não | Nome exibido para o bot |
 | `MC_OFFLINE` | não | Use `true` para servidor offline; padrão `true` |
 | `OPENROUTER_API_KEY` | sim | Chave da API do OpenRouter |

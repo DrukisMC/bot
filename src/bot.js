@@ -1,5 +1,4 @@
 import { EventEmitter } from 'node:events';
-import { createClient } from 'bedrock-protocol';
 import { logger } from './logger.js';
 import { extractChat, sendChat } from './chat.js';
 import { OpenRouterAI, logAIError } from './ai.js';
@@ -7,6 +6,7 @@ import { createCommandHandler } from './commands.js';
 import { TaskManager } from './tasks.js';
 import { Movement } from './movement.js';
 import { Inventory } from './inventory.js';
+import { createTermuxClient } from './bedrock.js';
 
 export class BuddyBot extends EventEmitter {
   constructor() {
@@ -16,7 +16,7 @@ export class BuddyBot extends EventEmitter {
   }
 
   connect() {
-    this.client = createClient({ host: process.env.MC_HOST, port: Number(process.env.MC_PORT || 19132), username: process.env.MC_USERNAME || 'BuddyBot', offline: process.env.MC_OFFLINE !== 'false', raknetBackend: 'jsp-raknet' });
+    this.client = createTermuxClient({ host: process.env.MC_HOST, port: Number(process.env.MC_PORT || 19132), username: process.env.MC_USERNAME || 'BuddyBot', offline: process.env.MC_OFFLINE !== 'false', version: process.env.MC_VERSION || '1.21.80' });
     this.movement = new Movement(this.client); this.inventory = new Inventory(this.client);
     const send = message => sendChat(this.client, message);
     this.handleCommand = createCommandHandler({ send, tasks: this.tasks, stop: () => this.disconnect() });

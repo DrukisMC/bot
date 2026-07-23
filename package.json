@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "check": "node --check src/index.js && node --check src/bot.js && node --check src/ai.js && node --check src/chat.js && node --check src/commands.js && node --check src/movement.js && node --check src/inventory.js && node --check src/tasks.js && node --check src/logger.js"
+    "check": "node --check src/index.js && node --check src/bot.js && node --check src/bedrock.js && node --check src/ai.js && node --check src/chat.js && node --check src/commands.js && node --check src/movement.js && node --check src/inventory.js && node --check src/tasks.js && node --check src/logger.js"
   },
   "engines": { "node": ">=18" },
   "dependencies": { "bedrock-protocol": "^3.45.0", "dotenv": "^16.4.7" }
