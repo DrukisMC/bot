@@ -15,7 +15,7 @@ Bot modular para Minecraft Bedrock Edition, escrito em Node.js e preparado para 
 ```sh
 pkg update
 pkg install nodejs-lts git
-git clone <url-do-seu-repositorio> BuddyBot
+git clone https://github.com/DrukisMC/bot.git BuddyBot
 cd BuddyBot
 npm install
 cp .env.example .env
